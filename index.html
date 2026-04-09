@@ -1,118 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Bookmarks (0)</title>
-<style>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bookmarks (4)</title><style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:11px;background:#0d1117;color:#c9d1d9}
-a{text-decoration:none;color:inherit}
-button{background:none;border:none;cursor:pointer;font:inherit;color:inherit;text-align:left;width:100%}
-::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:#30363d;border-radius:2px}
-
-/* ── shell ── */
+a{text-decoration:none;color:inherit}button{background:none;border:none;cursor:pointer;font:inherit;color:inherit;text-align:left;width:100%}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-thumb{background:#30363d;border-radius:2px}
 .sh{display:flex;flex-direction:column;height:100vh}
-
-/* ── topbar 36px ── */
 .tb{height:36px;background:#161b22;border-bottom:1px solid #21262d;display:flex;align-items:center;gap:8px;padding:0 12px;flex-shrink:0}
 .br{font-weight:700;font-size:12px;color:#388bfd;white-space:nowrap}
 .sw{position:relative;flex:1;max-width:280px}
 .sw input{width:100%;background:#0d1117;border:1px solid #21262d;border-radius:4px;padding:3px 8px 3px 22px;font-size:10.5px;color:#c9d1d9;outline:none}
 .sw input:focus{border-color:#388bfd}
 .sw svg{position:absolute;left:7px;top:50%;transform:translateY(-50%);color:#484f58;pointer-events:none}
-.ts{margin-left:auto;font-size:10px;color:#484f58;white-space:nowrap;display:flex;gap:8px}
-.ts b{color:#8b949e}
+.ts{margin-left:auto;font-size:10px;color:#484f58;white-space:nowrap;display:flex;gap:8px}.ts b{color:#8b949e}
 .el{font-size:10px;color:#388bfd;padding:2px 6px;border:1px solid #21262d;border-radius:4px;white-space:nowrap}
 .el:hover{border-color:#388bfd}
-
-/* ── body ── */
 .bd{display:flex;flex:1;overflow:hidden}
-
-/* ── sidebar 130px ── */
 .sb{width:130px;flex-shrink:0;background:#161b22;border-right:1px solid #21262d;overflow-y:auto;padding:4px;display:flex;flex-direction:column;gap:1px}
 .nav{display:flex;align-items:center;gap:4px;padding:3px 5px;border-radius:3px;font-size:10.5px;color:#8b949e;transition:background .1s,color .1s}
 .nav:hover,.nav.active{background:#21262d;color:#c9d1d9}
-.d{width:4px;height:4px;border-radius:50%;flex-shrink:0}
-.lb{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:10.5px}
-.n{font-size:9.5px;font-weight:700;flex-shrink:0}
-
-/* ── content ── */
+.d{width:4px;height:4px;border-radius:50%;flex-shrink:0}.lb{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:10.5px}.n{font-size:9.5px;font-weight:700;flex-shrink:0}
 .ct{flex:1;overflow:hidden;display:flex;flex-direction:column}
-
-/* ── panel ── */
 .panel{display:none;flex-direction:column;height:100%;overflow:hidden}
-
-/* ── panel header 26px ── */
 .ph{display:flex;align-items:center;gap:6px;padding:0 10px;height:26px;background:#161b22;border-bottom:1px solid #21262d;flex-shrink:0;font-size:10.5px;color:#8b949e}
-.pc{font-size:9.5px;font-weight:700;margin-left:4px}
-.pu{margin-left:auto;font-size:9.5px;color:#30363d}
-
-/* ── grid: 3 columns ── */
+.pc{font-size:9.5px;font-weight:700;margin-left:4px}.pu{margin-left:auto;font-size:9.5px;color:#30363d}
 .gr{flex:1;overflow-y:auto;display:grid;grid-template-columns:repeat(3,1fr);align-content:start}
 @media(max-width:1100px){.gr{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:700px){.gr{grid-template-columns:1fr}}
-
-/* ── row 22px ── */
 .r{display:flex;align-items:center;gap:5px;padding:0 8px;height:22px;border-bottom:1px solid #161b22;border-right:1px solid #161b22;overflow:hidden;position:relative;transition:background .08s}
 .r::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--c,#388bfd);opacity:0;transition:opacity .08s}
-.r:hover{background:#1c2128}
-.r:hover::before{opacity:1}
+.r:hover{background:#1c2128}.r:hover::before{opacity:1}
 .fi{width:12px;height:12px;flex-shrink:0;border-radius:2px;object-fit:contain}
 .tt{flex:1;font-size:11px;font-weight:500;color:#c9d1d9;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
 .dm{font-size:9.5px;color:#484f58;white-space:nowrap;flex-shrink:0;margin-left:3px;max-width:90px;overflow:hidden;text-overflow:ellipsis}
-
-.hidden{display:none!important}
-.empty{padding:40px;text-align:center;color:#484f58;font-size:12px}
-</style>
-</head>
-<body>
-<div class="sh">
-  <div class="tb">
-    <span class="br">🔖 Bookmarks</span>
-    <div class="sw">
-      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <input type="search" id="q" placeholder="Search…" autocomplete="off">
-    </div>
-    <div class="ts"><span><b>0</b> links</span><span><b>0</b> cats</span></div>
-    <a class="el" href="https://rajeshkumar-pm.github.io/my-bookmarks/" target="_blank">↗ Live</a>
-  </div>
-  <div class="bd">
-    <div class="sb" id="sb"></div>
-    <div class="ct" id="ct">
-      <div class="empty">No bookmarks yet — add your first URL in the chat.</div>
-    </div>
-  </div>
-</div>
+.hidden{display:none!important}.empty{padding:40px;text-align:center;color:#484f58;font-size:12px}
+</style></head><body>
+<div class="sh"><div class="tb"><span class="br">🔖 Bookmarks</span>
+<div class="sw"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg><input type="search" id="q" placeholder="Search…" autocomplete="off"></div>
+<div class="ts"><span><b>4</b> links</span><span><b>4</b> cats</span></div>
+<a class="el" href="https://rajeshkumar-pm.github.io/my-bookmarks/" target="_blank">↗ Live</a></div>
+<div class="bd"><div class="sb" id="sb"><button class="nav active" data-cat="observability" onclick="showCat('observability',this)"><span class="d" style="background:#06b6d4"></span><span class="lb">📡 Observability</span><span class="n" style="color:#06b6d4">1</span></button><button class="nav" data-cat="design_docs" onclick="showCat('design_docs',this)"><span class="d" style="background:#8b5cf6"></span><span class="lb">📋 Design Docs</span><span class="n" style="color:#8b5cf6">1</span></button><button class="nav" data-cat="apis_and_integrations" onclick="showCat('apis_and_integrations',this)"><span class="d" style="background:#f97316"></span><span class="lb">🔌 APIs & Integrations</span><span class="n" style="color:#f97316">1</span></button><button class="nav" data-cat="communication" onclick="showCat('communication',this)"><span class="d" style="background:#a855f7"></span><span class="lb">💬 Communication</span><span class="n" style="color:#a855f7">1</span></button></div><div class="ct" id="ct"><div class="panel" id="p-observability" style="display:flex"><div class="ph" style="border-left:2px solid #06b6d4">📡 <b>Observability</b><span class="pc" style="color:#06b6d4">1</span><span class="pu">2026-04-09</span></div><div class="gr" id="gr-observability"><a class="r" href="https://one.newrelic.com/dashboards/detail/MjY2NTkxOHxWSVp8REFTSEJPQVJEfGRhOjEyMzA2NDgz?account=2665918" target="_blank" rel="noopener" data-s="new relic dashboard production monitoring dashboard in new relic. observability one.newrelic.com newrelic monitoring dashboard" title="Production monitoring dashboard in New Relic." style="--c:#06b6d4"><img class="fi" src="https://www.google.com/s2/favicons?domain=one.newrelic.com&sz=32" loading="lazy" onerror="this.style.visibility='hidden'"><span class="tt">New Relic Dashboard</span><span class="dm">one.newrelic.com</span></a></div></div><div class="panel" id="p-design_docs" style="display:none"><div class="ph" style="border-left:2px solid #8b5cf6">📋 <b>Design Docs</b><span class="pc" style="color:#8b5cf6">1</span><span class="pu">2026-04-09</span></div><div class="gr" id="gr-design_docs"><a class="r" href="https://docs.google.com/document/d/1rAydkiO18T0zPz6QWUg6w4jrPVH1u97aUHgWfw4Qo1Y/edit" target="_blank" rel="noopener" data-s="project reference document key project documentation and reference material. design docs docs.google.com docs reference google-docs" title="Key project documentation and reference material." style="--c:#8b5cf6"><img class="fi" src="https://www.google.com/s2/favicons?domain=docs.google.com&sz=32" loading="lazy" onerror="this.style.visibility='hidden'"><span class="tt">Project Reference Document</span><span class="dm">docs.google.com</span></a></div></div><div class="panel" id="p-apis_and_integrations" style="display:none"><div class="ph" style="border-left:2px solid #f97316">🔌 <b>APIs & Integrations</b><span class="pc" style="color:#f97316">1</span><span class="pu">2026-04-09</span></div><div class="gr" id="gr-apis_and_integrations"><a class="r" href="https://postman.postman.co/workspace/IAM-Catalogue-APIs~4935b346-812a-494a-801c-671dc6e5ecb1/overview" target="_blank" rel="noopener" data-s="iam catalogue apis postman workspace for iam catalogue api collections and environments. apis & integrations postman.postman.co postman iam api" title="Postman workspace for IAM Catalogue API collections and environments." style="--c:#f97316"><img class="fi" src="https://www.google.com/s2/favicons?domain=postman.postman.co&sz=32" loading="lazy" onerror="this.style.visibility='hidden'"><span class="tt">IAM Catalogue APIs</span><span class="dm">postman.postman.co</span></a></div></div><div class="panel" id="p-communication" style="display:none"><div class="ph" style="border-left:2px solid #a855f7">💬 <b>Communication</b><span class="pc" style="color:#a855f7">1</span><span class="pu">2026-04-09</span></div><div class="gr" id="gr-communication"><a class="r" href="https://postman.slack.com/archives/D0A7Q8YQBN3/p1775123992111719" target="_blank" rel="noopener" data-s="slack dm thread direct message thread in postman slack workspace. communication postman.slack.com slack dm" title="Direct message thread in Postman Slack workspace." style="--c:#a855f7"><img class="fi" src="https://www.google.com/s2/favicons?domain=postman.slack.com&sz=32" loading="lazy" onerror="this.style.visibility='hidden'"><span class="tt">Slack DM Thread</span><span class="dm">postman.slack.com</span></a></div></div></div></div></div>
 <script>
-var A='';
-function showCat(c,b){
-  A=c;
-  document.querySelectorAll('.panel').forEach(p=>p.style.display='none');
-  document.querySelectorAll('.nav').forEach(n=>n.classList.remove('active'));
-  var p=document.getElementById('p-'+c);if(p)p.style.display='flex';
-  if(b)b.classList.add('active');
-  var q=document.getElementById('q');if(q){q.value='';showAll(c);}
-}
-function showAll(c){
-  var g=document.getElementById('gr-'+c);
-  if(g)g.querySelectorAll('.r').forEach(r=>r.classList.remove('hidden'));
-}
-document.getElementById('q').addEventListener('input',function(){
-  var q=this.value.toLowerCase().trim();
-  if(q.length>1){
-    document.querySelectorAll('.panel').forEach(function(p){
-      var ok=false;
-      p.querySelectorAll('.r').forEach(function(r){var m=r.dataset.s.includes(q);r.classList.toggle('hidden',!m);if(m)ok=true;});
-      p.style.display=ok?'flex':'none';
-    });
-    document.querySelectorAll('.nav').forEach(n=>n.classList.remove('active'));
-  }else{
-    document.querySelectorAll('.panel').forEach(function(p){p.style.display='none';p.querySelectorAll('.r').forEach(r=>r.classList.remove('hidden'));});
-    var ap=document.getElementById('p-'+A);if(ap)ap.style.display='flex';
-    document.querySelectorAll('.nav').forEach(function(n){if(n.dataset.cat===A)n.classList.add('active');});
-  }
-});
-</script>
-</body>
-</html>
+var A='observability';
+function showCat(c,b){A=c;document.querySelectorAll('.panel').forEach(p=>p.style.display='none');document.querySelectorAll('.nav').forEach(n=>n.classList.remove('active'));var p=document.getElementById('p-'+c);if(p)p.style.display='flex';if(b)b.classList.add('active');var q=document.getElementById('q');if(q){q.value='';showAll(c);}}
+function showAll(c){var g=document.getElementById('gr-'+c);if(g)g.querySelectorAll('.r').forEach(r=>r.classList.remove('hidden'));}
+document.getElementById('q').addEventListener('input',function(){var q=this.value.toLowerCase().trim();if(q.length>1){document.querySelectorAll('.panel').forEach(function(p){var ok=false;p.querySelectorAll('.r').forEach(function(r){var m=r.dataset.s.includes(q);r.classList.toggle('hidden',!m);if(m)ok=true;});p.style.display=ok?'flex':'none';});document.querySelectorAll('.nav').forEach(n=>n.classList.remove('active'))}else{document.querySelectorAll('.panel').forEach(function(p){p.style.display='none';p.querySelectorAll('.r').forEach(r=>r.classList.remove('hidden'));});var ap=document.getElementById('p-'+A);if(ap)ap.style.display='flex';document.querySelectorAll('.nav').forEach(function(n){if(n.dataset.cat===A)n.classList.add('active');});}}); 
+</script></body></html>
