@@ -5,168 +5,371 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Bookmarks (4)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700&display=swap" rel="stylesheet">
 <style>
-/* ── Postman-style CSS variables ── */
-:root[data-theme="dark"]{
-  --bg:       #1A1A2E;
-  --bg2:      #16213E;
-  --bg3:      #0F3460;
-  --border:   #2a2f5a;
-  --text:     #e8eaf6;
-  --text2:    #9fa8da;
-  --text3:    #5c6bc0;
-  --accent:   #FF6C37;
-  --accent2:  #ff8a65;
-  --link:     #82b1ff;
-  --hover:    #1e2b5e;
-  --row-sep:  #1e2347;
-  --thumb:    #3d4a8a;
+/* ── DESIGN TOKENS ── */
+:root{
+  --grad: linear-gradient(135deg,#FF6C37 0%,#FF3CAC 100%);
+  --grad-subtle: linear-gradient(135deg,rgba(255,108,55,.18) 0%,rgba(255,60,172,.18) 100%);
 }
-:root[data-theme="light"]{
-  --bg:       #ffffff;
-  --bg2:      #f5f5f5;
-  --bg3:      #eeeeee;
-  --border:   #e0e0e0;
-  --text:     #212121;
-  --text2:    #616161;
-  --text3:    #9e9e9e;
-  --accent:   #FF6C37;
-  --accent2:  #e64a19;
-  --link:     #FF6C37;
-  --hover:    #fff3e0;
-  --row-sep:  #f5f5f5;
-  --thumb:    #bdbdbd;
+[data-theme="dark"]{
+  --bg:      #07070F;
+  --sf:      #0D0D1C;
+  --sf2:     #111126;
+  --bd:      rgba(255,108,55,.12);
+  --bd2:     rgba(255,255,255,.06);
+  --tx:      #EEEEFF;
+  --tx2:     #8888AA;
+  --tx3:     #44445A;
+  --acc:     #FF6C37;
+  --acc2:    #FF3CAC;
+  --hov:     rgba(255,108,55,.07);
+  --sep:     rgba(255,255,255,.04);
+  --thumb:   #2A2A4A;
+  --glow:    rgba(255,108,55,.35);
+  --sb-act:  rgba(255,108,55,.12);
+}
+[data-theme="light"]{
+  --bg:      #F7F7FB;
+  --sf:      #FFFFFF;
+  --sf2:     #F0F0F8;
+  --bd:      rgba(0,0,0,.09);
+  --bd2:     rgba(0,0,0,.06);
+  --tx:      #0D0D1C;
+  --tx2:     #555570;
+  --tx3:     #AAAABB;
+  --acc:     #FF6C37;
+  --acc2:    #e6005a;
+  --hov:     rgba(255,108,55,.06);
+  --sep:     rgba(0,0,0,.05);
+  --thumb:   #CCCCDD;
+  --glow:    rgba(255,108,55,.2);
+  --sb-act:  rgba(255,108,55,.1);
 }
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%;overflow:hidden;font-family:'Inter',system-ui,-apple-system,sans-serif;font-size:11px;background:var(--bg);color:var(--text)}
+html,body{height:100%;overflow:hidden;font-family:'Inter',system-ui,sans-serif;font-size:11px;background:var(--bg);color:var(--tx);-webkit-font-smoothing:antialiased}
 a{text-decoration:none;color:inherit}
 button{background:none;border:none;cursor:pointer;font:inherit;color:inherit;text-align:left;width:100%}
-::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar{width:3px}
 ::-webkit-scrollbar-track{background:transparent}
 ::-webkit-scrollbar-thumb{background:var(--thumb);border-radius:2px}
+::-webkit-scrollbar-thumb:hover{background:var(--acc)}
 
-/* ── shell ── */
+/* ── SHELL ── */
 .sh{display:flex;flex-direction:column;height:100vh}
 
-/* ── topbar 38px ── */
-.tb{height:38px;background:var(--bg2);border-bottom:2px solid var(--accent);display:flex;align-items:center;gap:8px;padding:0 12px;flex-shrink:0}
-.br{font-weight:700;font-size:12px;color:var(--accent);white-space:nowrap;letter-spacing:.3px}
-.sw{position:relative;flex:1;max-width:300px}
-.sw input{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:3px 8px 3px 24px;font-size:10.5px;color:var(--text);outline:none;font-family:inherit}
-.sw input:focus{border-color:var(--accent);box-shadow:0 0 0 2px rgba(255,108,55,.15)}
-.sw svg{position:absolute;left:7px;top:50%;transform:translateY(-50%);color:var(--text3);pointer-events:none}
-.ts{margin-left:auto;font-size:10px;color:var(--text3);white-space:nowrap;display:flex;gap:8px}
-.ts b{color:var(--text2)}
-.el{font-size:10px;color:var(--accent);padding:2px 7px;border:1px solid var(--accent);border-radius:4px;white-space:nowrap;font-weight:500}
-.el:hover{background:var(--accent);color:#fff}
-/* theme toggle */
-.tt-btn{font-size:14px;padding:2px 4px;border-radius:4px;color:var(--text2);transition:background .1s}
-.tt-btn:hover{background:var(--bg3)}
+/* ── TOPBAR 42px ── */
+.tb{
+  height:42px;background:var(--sf);
+  border-bottom:1px solid var(--bd);
+  display:flex;align-items:center;gap:10px;padding:0 14px;flex-shrink:0;
+  position:relative;
+}
+.tb::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:1.5px;
+  background:var(--grad);
+}
+.br{
+  font-weight:700;font-size:13px;
+  background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;white-space:nowrap;letter-spacing:-.2px;flex-shrink:0;
+}
 
-/* ── body ── */
+/* search wrapper — takes remaining space */
+.sw{
+  position:relative;flex:1;max-width:480px;
+}
+.sw input{
+  width:100%;height:26px;
+  background:var(--sf2);
+  border:1px solid var(--bd2);
+  border-radius:20px;
+  padding:0 12px 0 30px;
+  font-size:11.5px;font-family:inherit;
+  color:var(--tx);outline:none;
+  transition:border-color .2s,box-shadow .2s;
+}
+.sw input::placeholder{color:var(--tx3)}
+.sw input:focus{
+  border-color:var(--acc);
+  box-shadow:0 0 0 3px var(--glow);
+  background:var(--sf);
+}
+.sw .si{
+  position:absolute;left:10px;top:50%;transform:translateY(-50%);
+  color:var(--tx3);pointer-events:none;transition:color .2s;
+}
+.sw input:focus ~ .si,.sw input:not(:placeholder-shown) ~ .si{color:var(--acc)}
+.sw .sc{
+  position:absolute;right:8px;top:50%;transform:translateY(-50%);
+  color:var(--tx3);cursor:pointer;font-size:13px;display:none;line-height:1;
+}
+.sw input:not(:placeholder-shown) ~ .sc{display:block}
+.sw .sc:hover{color:var(--acc)}
+
+/* stat chips */
+.ts{margin-left:auto;display:flex;gap:6px;align-items:center;flex-shrink:0}
+.chip{
+  font-size:10px;font-weight:600;padding:2px 8px;border-radius:20px;
+  background:var(--sf2);border:1px solid var(--bd2);color:var(--tx2);
+  white-space:nowrap;
+}
+.chip span{color:var(--acc);margin-right:2px}
+
+/* icon button */
+.ib{
+  font-size:15px;width:26px;height:26px;border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--tx2);transition:background .15s,transform .15s;flex-shrink:0;
+}
+.ib:hover{background:var(--sf2);transform:scale(1.1)}
+
+/* live button */
+.el{
+  font-size:10px;font-weight:600;padding:3px 10px;
+  border-radius:20px;white-space:nowrap;flex-shrink:0;
+  background:var(--grad);color:#fff;
+  transition:opacity .15s,transform .15s;box-shadow:0 2px 8px var(--glow);
+}
+.el:hover{opacity:.85;transform:translateY(-1px)}
+
+/* ── BODY ── */
 .bd{display:flex;flex:1;overflow:hidden}
 
-/* ── sidebar 138px ── */
-.sb{width:138px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--border);overflow-y:auto;padding:4px;display:flex;flex-direction:column;gap:1px}
-.nav{display:flex;align-items:center;gap:4px;padding:3px 5px;border-radius:4px;font-size:10.5px;color:var(--text2);transition:background .1s,color .1s;font-family:inherit}
-.nav:hover,.nav.active{background:var(--hover);color:var(--text)}
+/* ── SIDEBAR 144px ── */
+.sb{
+  width:144px;flex-shrink:0;
+  background:var(--sf);border-right:1px solid var(--bd);
+  overflow-y:auto;padding:6px 4px;
+  display:flex;flex-direction:column;gap:1px;
+}
+.sb-head{
+  font-size:9px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;
+  color:var(--tx3);padding:4px 6px 2px;
+}
+
+.nav{
+  display:flex;align-items:center;gap:5px;
+  padding:4px 6px;border-radius:6px;
+  font-size:10.5px;color:var(--tx2);
+  transition:background .12s,color .12s;
+  font-family:inherit;position:relative;overflow:hidden;
+}
+.nav::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:2px;
+  background:var(--grad);opacity:0;transition:opacity .15s;border-radius:0 1px 1px 0;
+}
+.nav:hover{background:var(--hov);color:var(--tx)}
+.nav.active{background:var(--sb-act);color:var(--tx)}
+.nav.active::before{opacity:1}
 .nav.active .lb{font-weight:600}
-.d{width:4px;height:4px;border-radius:50%;flex-shrink:0}
+.di{width:6px;height:6px;border-radius:50%;flex-shrink:0;opacity:.8}
 .lb{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:10.5px}
-.n{font-size:9.5px;font-weight:700;flex-shrink:0}
+.nn{
+  font-size:9.5px;font-weight:700;flex-shrink:0;
+  background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
 
-/* ── content ── */
-.ct{flex:1;overflow:hidden;display:flex;flex-direction:column}
+/* ── CONTENT ── */
+.ct{flex:1;overflow:hidden;display:flex;flex-direction:column;background:var(--bg)}
 
-/* ── panel ── */
+/* ── PANEL ── */
 .panel{display:none;flex-direction:column;height:100%;overflow:hidden}
+#srp{display:none;flex-direction:column;height:100%;overflow:hidden}
 
-/* ── panel header 28px ── */
-.ph{display:flex;align-items:center;gap:6px;padding:0 10px;height:28px;background:var(--bg2);border-bottom:1px solid var(--border);flex-shrink:0;font-size:10.5px;color:var(--text2)}
-.pc{font-size:9.5px;font-weight:700;margin-left:4px}
-.pu{margin-left:auto;font-size:9.5px;color:var(--text3)}
+/* ── PANEL HEADER 30px ── */
+.ph{
+  display:flex;align-items:center;gap:7px;padding:0 12px;height:30px;
+  background:var(--sf);border-bottom:1px solid var(--bd);
+  flex-shrink:0;font-size:10.5px;color:var(--tx2);
+}
+.ph-ico{font-size:13px}
+.ph-ttl{font-weight:600;color:var(--tx);font-size:11px}
+.ph-cnt{
+  font-size:9.5px;font-weight:700;margin-left:2px;
+  background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.ph-date{margin-left:auto;font-size:9.5px;color:var(--tx3)}
 
-/* ── grid: 3 columns ── */
-.gr{flex:1;overflow-y:auto;display:grid;grid-template-columns:repeat(3,1fr);align-content:start}
+/* ── GRID 3-col ── */
+.gr{
+  flex:1;overflow-y:auto;
+  display:grid;grid-template-columns:repeat(3,1fr);
+  align-content:start;
+}
 @media(max-width:1100px){.gr{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:700px){.gr{grid-template-columns:1fr}}
+@media(max-width:720px){.gr{grid-template-columns:1fr}}
 
-/* ── row 22px ── */
-.r{display:flex;align-items:center;gap:5px;padding:0 8px;height:22px;border-bottom:1px solid var(--row-sep);border-right:1px solid var(--row-sep);overflow:hidden;position:relative;transition:background .08s}
-.r::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--c,var(--accent));opacity:0;transition:opacity .08s}
-.r:hover{background:var(--hover)}
+/* ── ROW 22px ── */
+.r{
+  display:flex;align-items:center;gap:5px;padding:0 10px;
+  height:22px;
+  border-bottom:1px solid var(--sep);
+  border-right:1px solid var(--sep);
+  overflow:hidden;position:relative;
+  transition:background .08s;
+  cursor:pointer;
+}
+.r::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:2px;
+  background:var(--c,var(--acc));opacity:0;transition:opacity .1s;
+}
+.r:hover{background:var(--hov)}
 .r:hover::before{opacity:1}
+.r:hover .rt{color:var(--acc)}
 .fi{width:12px;height:12px;flex-shrink:0;border-radius:2px;object-fit:contain}
-.rt{flex:1;font-size:11px;font-weight:500;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
-.dm{font-size:9.5px;color:var(--text3);white-space:nowrap;flex-shrink:0;margin-left:3px;max-width:90px;overflow:hidden;text-overflow:ellipsis}
+.rt{
+  flex:1;font-size:11px;font-weight:500;color:var(--tx);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;
+  transition:color .08s;
+}
+.dm{
+  font-size:9px;color:var(--tx3);white-space:nowrap;
+  flex-shrink:0;margin-left:3px;max-width:80px;
+  overflow:hidden;text-overflow:ellipsis;
+}
+/* category badge — only visible in search results */
+.cb{
+  font-size:8.5px;font-weight:600;padding:1px 5px;border-radius:3px;
+  background:rgba(255,108,55,.12);color:var(--acc);white-space:nowrap;flex-shrink:0;display:none;
+}
+.srp-mode .cb{display:block}
+
+/* ── SEARCH RESULTS PANEL ── */
+.sr-head{
+  font-size:9px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;
+  color:var(--tx3);padding:8px 12px 4px;flex-shrink:0;
+}
+.sr-gr{
+  flex:1;overflow-y:auto;
+  display:grid;grid-template-columns:repeat(3,1fr);
+  align-content:start;
+}
+@media(max-width:1100px){.sr-gr{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:720px){.sr-gr{grid-template-columns:1fr}}
 
 .hidden{display:none!important}
-.empty{padding:40px;text-align:center;color:var(--text3);font-size:12px}
+.empty{
+  padding:60px 40px;text-align:center;color:var(--tx3);
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+}
+.empty .e-ico{font-size:28px;opacity:.4}
+.empty .e-txt{font-size:12px}
+.empty .e-hint{font-size:10.5px;color:var(--tx3);opacity:.7}
 </style>
 </head>
 <body>
 <div class="sh">
+
+  <!-- TOPBAR -->
   <div class="tb">
     <span class="br">🔖 Bookmarks</span>
     <div class="sw">
-      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <input type="search" id="q" placeholder="Search all bookmarks…" autocomplete="off">
+      <svg class="si" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" id="q" placeholder="Search all bookmarks…" autocomplete="off" spellcheck="false">
+      <span class="sc" id="qc" onclick="clearSearch()">×</span>
     </div>
-    <div class="ts"><span><b>4</b> links</span><span><b>4</b> cats</span></div>
-    <button class="tt-btn" id="themeBtn" onclick="toggleTheme()" title="Toggle light/dark">🌓</button>
+    <div class="ts">
+      <span class="chip"><span>4</span>links</span>
+      <span class="chip"><span>4</span>cats</span>
+    </div>
+    <button class="ib" id="themeBtn" onclick="toggleTheme()" title="Toggle theme">🌓</button>
     <a class="el" href="https://rajeshkumar-pm.github.io/my-bookmarks/" target="_blank">↗ Live</a>
   </div>
+
+  <!-- BODY -->
   <div class="bd">
-    <div class="sb" id="sb"><button class="nav active" data-cat="observability" onclick="showCat('observability',this)"><span class="d" style="background:#06b6d4"></span><span class="lb">📡 Observability</span><span class="n" style="color:#06b6d4">1</span></button><button class="nav" data-cat="design-docs" onclick="showCat('design-docs',this)"><span class="d" style="background:#8b5cf6"></span><span class="lb">📐 Design Docs</span><span class="n" style="color:#8b5cf6">1</span></button><button class="nav" data-cat="apis-integrations" onclick="showCat('apis-integrations',this)"><span class="d" style="background:#3b82f6"></span><span class="lb">🔌 APIs & Integrations</span><span class="n" style="color:#3b82f6">1</span></button><button class="nav" data-cat="communication" onclick="showCat('communication',this)"><span class="d" style="background:#14b8a6"></span><span class="lb">💬 Communication</span><span class="n" style="color:#14b8a6">1</span></button></div>
-    <div class="ct" id="ct">
-      <div class="panel" id="p-observability" style="display:flex"><div class="ph" style="border-left:2px solid #06b6d4">📡 <b>Observability</b><span class="pc" style="color:#06b6d4">1</span><span class="pu">2025-07-01</span></div><div class="gr" id="gr-observability"><a class="r" href="https://one.newrelic.com/dashboards/abc" target="_blank" rel="noopener" data-s="new relic dashboard production observability dashboard. observability one.newrelic.com newrelic monitoring observability" title="Production observability dashboard." style="--c:#06b6d4"><img class="fi" src="https://www.google.com/s2/favicons?domain=one.newrelic.com&sz=32" loading="lazy" onerror="this.style.visibility='hidden'"><span class="rt">New Relic Dashboard</span><span class="dm">one.newrelic.com</span></a></div></div><div class="panel" id="p-design-docs" style="display:none"><div class="ph" style="border-left:2px solid #8b5cf6">📐 <b>Design Docs</b><span class="pc" style="color:#8b5cf6">1</span><span class="pu">2025-07-01</span></div><div class="gr" id="gr-design-docs"><a class="r" href="https://docs.example.com/project-ref" target="_blank" rel="noopener" data-s="project reference document design and architecture reference document. design docs docs.example.com design reference docs" title="Design and architecture reference document." style="--c:#8b5cf6"><img class="fi" src="https://www.google.com/s2/favicons?domain=docs.example.com&sz=32" loading="lazy" onerror="this.style.visibility='hidden'"><span class="rt">Project Reference Document</span><span class="dm">docs.example.com</span></a></div></div><div class="panel" id="p-apis-integrations" style="display:none"><div class="ph" style="border-left:2px solid #3b82f6">🔌 <b>APIs & Integrations</b><span class="pc" style="color:#3b82f6">1</span><span class="pu">2025-07-01</span></div><div class="gr" id="gr-apis-integrations"><a class="r" href="https://postman-iam.example.com/catalogue" target="_blank" rel="noopener" data-s="iam catalogue apis internal iam api catalogue reference. apis & integrations postman-iam.example.com iam api postman" title="Internal IAM API catalogue reference." style="--c:#3b82f6"><img class="fi" src="https://www.google.com/s2/favicons?domain=postman-iam.example.com&sz=32" loading="lazy" onerror="this.style.visibility='hidden'"><span class="rt">IAM Catalogue APIs</span><span class="dm">postman-iam.example.com</span></a></div></div><div class="panel" id="p-communication" style="display:none"><div class="ph" style="border-left:2px solid #14b8a6">💬 <b>Communication</b><span class="pc" style="color:#14b8a6">1</span><span class="pu">2025-07-01</span></div><div class="gr" id="gr-communication"><a class="r" href="https://slack.com/archives/C123/p456" target="_blank" rel="noopener" data-s="slack dm thread important slack discussion thread. communication slack.com slack thread" title="Important Slack discussion thread." style="--c:#14b8a6"><img class="fi" src="https://www.google.com/s2/favicons?domain=slack.com&sz=32" loading="lazy" onerror="this.style.visibility='hidden'"><span class="rt">Slack DM Thread</span><span class="dm">slack.com</span></a></div></div>
+
+    <!-- SIDEBAR -->
+    <div class="sb" id="sb">
+      <div class="sb-head">Categories</div>
+      <button class="nav active" data-cat="observability" onclick="showCat('observability',this)"><span class="di" style="background:#06b6d4"></span><span class="lb">📡 Observability</span><span class="nn">1</span></button><button class="nav" data-cat="design-docs" onclick="showCat('design-docs',this)"><span class="di" style="background:#8b5cf6"></span><span class="lb">📐 Design Docs</span><span class="nn">1</span></button><button class="nav" data-cat="apis-integrations" onclick="showCat('apis-integrations',this)"><span class="di" style="background:#3b82f6"></span><span class="lb">🔌 APIs & Integrations</span><span class="nn">1</span></button><button class="nav" data-cat="communication" onclick="showCat('communication',this)"><span class="di" style="background:#14b8a6"></span><span class="lb">💬 Communication</span><span class="nn">1</span></button>
     </div>
+
+    <!-- CONTENT -->
+    <div class="ct" id="ct">
+      <!-- Search results panel (hidden by default) -->
+      <div id="srp" class="srp-mode">
+        <div class="ph">
+          <span class="ph-ico">🔍</span>
+          <span class="ph-ttl">Search Results</span>
+          <span class="ph-cnt" id="sr-cnt"></span>
+          <span class="ph-date" id="sr-query"></span>
+        </div>
+        <div class="sr-gr" id="sr-gr"></div>
+      </div>
+
+      <!-- Category panels -->
+      <div class="panel" id="p-observability" style="display:flex"><div class="ph"><span class="ph-ico">📡</span><span class="ph-ttl">Observability</span><span class="ph-cnt">1</span><span class="ph-date">2025-07-01</span></div><div class="gr" id="gr-observability"><a class="r" href="https://one.newrelic.com/dashboards/abc" target="_blank" rel="noopener" title="Production observability dashboard." style="--c:#06b6d4"><img class="fi" src="https://www.google.com/s2/favicons?domain=one.newrelic.com&sz=32" loading="lazy" onerror="this.style.visibility='hidden'"><span class="rt">New Relic Dashboard</span><span class="dm">one.newrelic.com</span></a></div></div><div class="panel" id="p-design-docs" style="display:none"><div class="ph"><span class="ph-ico">📐</span><span class="ph-ttl">Design Docs</span><span class="ph-cnt">1</span><span class="ph-date">2025-07-01</span></div><div class="gr" id="gr-design-docs"><a class="r" href="https://docs.example.com/project-ref" target="_blank" rel="noopener" title="Design and architecture reference document." style="--c:#8b5cf6"><img class="fi" src="https://www.google.com/s2/favicons?domain=docs.example.com&sz=32" loading="lazy" onerror="this.style.visibility='hidden'"><span class="rt">Project Reference Document</span><span class="dm">docs.example.com</span></a></div></div><div class="panel" id="p-apis-integrations" style="display:none"><div class="ph"><span class="ph-ico">🔌</span><span class="ph-ttl">APIs & Integrations</span><span class="ph-cnt">1</span><span class="ph-date">2025-07-01</span></div><div class="gr" id="gr-apis-integrations"><a class="r" href="https://postman-iam.example.com/catalogue" target="_blank" rel="noopener" title="Internal IAM API catalogue reference." style="--c:#3b82f6"><img class="fi" src="https://www.google.com/s2/favicons?domain=postman-iam.example.com&sz=32" loading="lazy" onerror="this.style.visibility='hidden'"><span class="rt">IAM Catalogue APIs</span><span class="dm">postman-iam.example.com</span></a></div></div><div class="panel" id="p-communication" style="display:none"><div class="ph"><span class="ph-ico">💬</span><span class="ph-ttl">Communication</span><span class="ph-cnt">1</span><span class="ph-date">2025-07-01</span></div><div class="gr" id="gr-communication"><a class="r" href="https://slack.com/archives/C123/p456" target="_blank" rel="noopener" title="Important Slack discussion thread." style="--c:#14b8a6"><img class="fi" src="https://www.google.com/s2/favicons?domain=slack.com&sz=32" loading="lazy" onerror="this.style.visibility='hidden'"><span class="rt">Slack DM Thread</span><span class="dm">slack.com</span></a></div></div>
+    </div>
+
   </div>
 </div>
+
 <script>
 var A='observability';
-// ── theme ────────────────────────────────────────────────────────────────────
+var ALL=[{"url":"https://postman-iam.example.com/catalogue","title":"IAM Catalogue APIs","domain":"postman-iam.example.com","cat":"APIs & Integrations","ico":"🔌","col":"#3b82f6","srch":"iam catalogue apis internal iam api catalogue reference. apis & integrations postman-iam.example.com iam api postman","tip":"Internal IAM API catalogue reference.","favicon":"https://www.google.com/s2/favicons?domain=postman-iam.example.com&sz=32"},{"url":"https://docs.example.com/project-ref","title":"Project Reference Document","domain":"docs.example.com","cat":"Design Docs","ico":"📐","col":"#8b5cf6","srch":"project reference document design and architecture reference document. design docs docs.example.com design reference docs","tip":"Design and architecture reference document.","favicon":"https://www.google.com/s2/favicons?domain=docs.example.com&sz=32"},{"url":"https://slack.com/archives/C123/p456","title":"Slack DM Thread","domain":"slack.com","cat":"Communication","ico":"💬","col":"#14b8a6","srch":"slack dm thread important slack discussion thread. communication slack.com slack thread","tip":"Important Slack discussion thread.","favicon":"https://www.google.com/s2/favicons?domain=slack.com&sz=32"},{"url":"https://one.newrelic.com/dashboards/abc","title":"New Relic Dashboard","domain":"one.newrelic.com","cat":"Observability","ico":"📡","col":"#06b6d4","srch":"new relic dashboard production observability dashboard. observability one.newrelic.com newrelic monitoring observability","tip":"Production observability dashboard.","favicon":"https://www.google.com/s2/favicons?domain=one.newrelic.com&sz=32"}];
+
+/* ── theme ── */
 (function(){
   var t=localStorage.getItem('bm-theme')||'dark';
   document.documentElement.setAttribute('data-theme',t);
 })();
 function toggleTheme(){
-  var el=document.documentElement;
-  var t=el.getAttribute('data-theme')==='dark'?'light':'dark';
-  el.setAttribute('data-theme',t);
+  var t=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+  document.documentElement.setAttribute('data-theme',t);
   localStorage.setItem('bm-theme',t);
 }
-// ── navigation ───────────────────────────────────────────────────────────────
+
+/* ── nav ── */
 function showCat(c,b){
   A=c;
+  clearSearch();
+  document.getElementById('srp').style.display='none';
   document.querySelectorAll('.panel').forEach(p=>p.style.display='none');
   document.querySelectorAll('.nav').forEach(n=>n.classList.remove('active'));
   var p=document.getElementById('p-'+c);if(p)p.style.display='flex';
   if(b)b.classList.add('active');
-  var q=document.getElementById('q');if(q){q.value='';showAll(c);}
 }
-function showAll(c){
-  var g=document.getElementById('gr-'+c);
-  if(g)g.querySelectorAll('.r').forEach(r=>r.classList.remove('hidden'));
+
+/* ── search ── */
+var qi=document.getElementById('q');
+function clearSearch(){
+  qi.value='';renderSearch('');
 }
-// ── search ───────────────────────────────────────────────────────────────────
-document.getElementById('q').addEventListener('input',function(){
-  var q=this.value.toLowerCase().trim();
-  if(q.length>1){
-    document.querySelectorAll('.panel').forEach(function(p){
-      var ok=false;
-      p.querySelectorAll('.r').forEach(function(r){var m=r.dataset.s.includes(q);r.classList.toggle('hidden',!m);if(m)ok=true;});
-      p.style.display=ok?'flex':'none';
-    });
-    document.querySelectorAll('.nav').forEach(n=>n.classList.remove('active'));
-  }else{
-    document.querySelectorAll('.panel').forEach(function(p){p.style.display='none';p.querySelectorAll('.r').forEach(r=>r.classList.remove('hidden'));});
+function renderSearch(q){
+  var srp=document.getElementById('srp');
+  var gr=document.getElementById('sr-gr');
+  var cnt=document.getElementById('sr-cnt');
+  var sq=document.getElementById('sr-query');
+  if(!q||q.length<2){
+    srp.style.display='none';
+    document.querySelectorAll('.panel').forEach(p=>p.style.display='none');
     var ap=document.getElementById('p-'+A);if(ap)ap.style.display='flex';
-    document.querySelectorAll('.nav').forEach(function(n){if(n.dataset.cat===A)n.classList.add('active');});
+    document.querySelectorAll('.nav').forEach(function(n){n.classList.toggle('active',n.dataset.cat===A);});
+    return;
   }
-});
+  /* hide category panels, show search results */
+  document.querySelectorAll('.panel').forEach(p=>p.style.display='none');
+  document.querySelectorAll('.nav').forEach(n=>n.classList.remove('active'));
+  srp.style.display='flex';
+  var matches=ALL.filter(function(bm){return bm.srch.includes(q);});
+  cnt.textContent=matches.length+' result'+(matches.length!==1?'s':'');
+  sq.textContent='"'+q+'"';
+  gr.innerHTML=matches.length===0
+    ?'<div class="empty" style="grid-column:1/-1"><span class="e-ico">🔍</span><span class="e-txt">No results for \''+q+'\'</span></div>'
+    :matches.map(function(bm){
+        return '<a class="r" href="'+bm.url+'" target="_blank" rel="noopener" style="--c:'+bm.col+'" title="'+bm.tip+'">'
+          +'<img class="fi" src="'+bm.favicon+'" loading="lazy" onerror="this.style.visibility='hidden'">'
+          +'<span class="rt">'+bm.title+'</span>'
+          +'<span class="cb">'+bm.ico+' '+bm.cat+'</span>'
+          +'<span class="dm">'+bm.domain+'</span>'
+          +'</a>';
+      }).join('');
+}
+qi.addEventListener('input',function(){renderSearch(this.value.toLowerCase().trim());});
 </script>
 </body>
 </html>
