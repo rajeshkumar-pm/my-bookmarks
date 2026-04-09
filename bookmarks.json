@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-04-09T08:41:34Z",
+  "updated_at": "2026-04-09T11:59:47Z",
   "bookmarks": [
     {
       "id": "a1b2c3d4",
@@ -209,6 +209,21 @@
         "issue-tracking"
       ],
       "added_at": "2026-04-09T07:56:35Z"
+    },
+    {
+      "id": "8228d569",
+      "url": "https://postmanlabs.atlassian.net/wiki/spaces/~703292801/pages/7800422467/Postman+Fabric+Gateway+Catalog+Workflows?atlOrigin=eyJpIjoiOTA4YWJmNTk0NTAyNDJkM2JkN2E5OGI1MGU3ZWJiZTUiLCJwIjoiY29uZmx1ZW5jZS1jaGF0cy1pbnQifQ",
+      "title": "Postman Fabric Gateway Catalog Workflows",
+      "description": "Confluence page covering the Postman Fabric Gateway catalog workflows, including design and integration details.",
+      "category": "MCP Gateway Initiative",
+      "tags": [
+        "postman",
+        "fabric",
+        "gateway",
+        "catalog",
+        "workflows"
+      ],
+      "added_at": "2026-04-09T11:59:47Z"
     }
   ]
 }
