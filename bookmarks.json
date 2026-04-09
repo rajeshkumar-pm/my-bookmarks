@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-04-09T07:43:32Z",
+  "updated_at": "2026-04-09T07:46:06Z",
   "bookmarks": [
     {
       "id": "a1b2c3d4",
@@ -153,6 +153,21 @@
         "confluence"
       ],
       "added_at": "2026-04-09T07:34:55Z"
+    },
+    {
+      "id": "7d24e467",
+      "url": "https://github.com/anthropics/anthropic-sdk-python",
+      "title": "Anthropic SDK for Python",
+      "description": "Official Python SDK for interacting with the Anthropic API, enabling integration with Claude models.",
+      "category": "AI & ML",
+      "tags": [
+        "anthropic",
+        "python",
+        "sdk",
+        "claude",
+        "ai"
+      ],
+      "added_at": "2026-04-09T07:46:06Z"
     }
   ]
 }
