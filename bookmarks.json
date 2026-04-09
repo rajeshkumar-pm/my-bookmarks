@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-04-09T07:18:14Z",
+  "updated_at": "2026-04-09T07:19:25Z",
   "bookmarks": [
     {
       "id": "a1b2c3d4",
@@ -67,6 +67,21 @@
         "developer-tools"
       ],
       "added_at": "2026-04-09T07:18:14Z"
+    },
+    {
+      "id": "96e94040",
+      "url": "https://d-906774b313.awsapps.com/start/#/?tab=accounts",
+      "title": "AWS Access Portal",
+      "description": "AWS SSO access portal for managing and signing into AWS accounts.",
+      "category": "Infrastructure",
+      "tags": [
+        "aws",
+        "sso",
+        "access-portal",
+        "cloud",
+        "accounts"
+      ],
+      "added_at": "2026-04-09T07:19:25Z"
     }
   ]
 }
