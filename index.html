@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Bookmarks</title>
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --accent: #38bdf8;
+            --text: #e2e8f0;
+            --muted: #94a3b8;
+            --hover: #334155;
+            --border: #334155;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+        .container { max-width: 1100px; margin: 0 auto; }
+        header { text-align: center; margin-bottom: 2.5rem; }
+        header h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #38bdf8, #818cf8, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+        header p { color: var(--muted); font-size: 1.1rem; }
+        .search-bar { display: flex; justify-content: center; margin-bottom: 2rem; }
+        .search-bar input {
+            width: 100%; max-width: 500px; padding: 0.75rem 1.25rem;
+            border-radius: 12px; border: 1px solid var(--border);
+            background: var(--card); color: var(--text); font-size: 1rem;
+            outline: none; transition: border-color 0.2s;
+        }
+        .search-bar input:focus { border-color: var(--accent); }
+        .search-bar input::placeholder { color: var(--muted); }
+        .category { margin-bottom: 2rem; }
+        .category h2 {
+            font-size: 1.3rem; margin-bottom: 0.75rem; padding-bottom: 0.4rem;
+            border-bottom: 2px solid var(--border); display: flex; align-items: center; gap: 0.5rem;
+        }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0.75rem; }
+        .bookmark {
+            display: flex; align-items: center; gap: 0.75rem;
+            background: var(--card); padding: 0.85rem 1rem; border-radius: 10px;
+            border: 1px solid var(--border); text-decoration: none; color: var(--text);
+            transition: all 0.2s ease;
+        }
+        .bookmark:hover {
+            background: var(--hover); border-color: var(--accent);
+            transform: translateY(-2px); box-shadow: 0 4px 12px rgba(56,189,248,0.15);
+        }
+        .bookmark img { width: 24px; height: 24px; border-radius: 4px; flex-shrink: 0; }
+        .bookmark .info { overflow: hidden; }
+        .bookmark .name { font-weight: 600; font-size: 0.95rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .bookmark .desc { font-size: 0.78rem; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        footer { text-align: center; margin-top: 3rem; color: var(--muted); font-size: 0.85rem; }
+        footer a { color: var(--accent); text-decoration: none; }
+        @media (max-width: 600px) { header h1 { font-size: 1.8rem; } .grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>My Bookmarks</h1>
+            <p>A beautifully curated collection of links, tools &amp; resources</p>
+        </header>
+        <div class="search-bar">
+            <input type="text" id="search" placeholder="Search bookmarks..." autocomplete="off" />
+        </div>
+        <div id="bookmarks"></div>
+        <footer>Built with care &mdash; <a href="https://github.com/rajeshkumar-pm/my-bookmarks">View on GitHub</a></footer>
+    </div>
+    <script>
+        const DATA = [
+            { title: "Daily Essentials", icon: "\u{1F305}", links: [
+                { name: "Google", url: "https://www.google.com", desc: "Search engine" },
+                { name: "Gmail", url: "https://mail.google.com", desc: "Email" },
+                { name: "Google Calendar", url: "https://calendar.google.com", desc: "Calendar & scheduling" },
+                { name: "Google Drive", url: "https://drive.google.com", desc: "Cloud storage & docs" },
+                { name: "Notion", url: "https://www.notion.so", desc: "Notes & workspace" },
+            ]},
+            { title: "Development & Code", icon: "\u{1F4BB}", links: [
+                { name: "GitHub", url: "https://github.com", desc: "Code hosting & collaboration" },
+                { name: "Stack Overflow", url: "https://stackoverflow.com", desc: "Developer Q&A" },
+                { name: "MDN Web Docs", url: "https://developer.mozilla.org", desc: "Web development reference" },
+                { name: "DevDocs", url: "https://devdocs.io", desc: "API documentation browser" },
+                { name: "CodePen", url: "https://codepen.io", desc: "Frontend playground" },
+                { name: "Replit", url: "https://replit.com", desc: "Online IDE" },
+                { name: "Regex101", url: "https://regex101.com", desc: "Regular expression tester" },
+                { name: "Can I Use", url: "https://caniuse.com", desc: "Browser compatibility tables" },
+                { name: "JSON Formatter", url: "https://jsonformatter.org", desc: "JSON tools" },
+                { name: "Postman", url: "https://www.postman.com", desc: "API testing platform" },
+            ]},
+            { title: "Design & Inspiration", icon: "\u{1F3A8}", links: [
+                { name: "Dribbble", url: "https://dribbble.com", desc: "Design inspiration" },
+                { name: "Behance", url: "https://www.behance.net", desc: "Creative portfolios" },
+                { name: "Figma", url: "https://www.figma.com", desc: "Collaborative design tool" },
+                { name: "Coolors", url: "https://coolors.co", desc: "Color palette generator" },
+                { name: "Google Fonts", url: "https://fonts.google.com", desc: "Free web fonts" },
+                { name: "Unsplash", url: "https://unsplash.com", desc: "Free high-quality photos" },
+                { name: "Icons8", url: "https://icons8.com", desc: "Icons, illustrations & photos" },
+                { name: "Heroicons", url: "https://heroicons.com", desc: "Beautiful SVG icons" },
+            ]},
+            { title: "Productivity & Tools", icon: "\u{26A1}", links: [
+                { name: "Trello", url: "https://trello.com", desc: "Kanban boards" },
+                { name: "Slack", url: "https://slack.com", desc: "Team communication" },
+                { name: "Todoist", url: "https://todoist.com", desc: "Task management" },
+                { name: "Excalidraw", url: "https://excalidraw.com", desc: "Virtual whiteboard" },
+                { name: "Grammarly", url: "https://www.grammarly.com", desc: "Writing assistant" },
+                { name: "Calendly", url: "https://calendly.com", desc: "Scheduling tool" },
+                { name: "1Password", url: "https://1password.com", desc: "Password manager" },
+                { name: "Loom", url: "https://www.loom.com", desc: "Screen recording" },
+            ]},
+            { title: "Learning & Courses", icon: "\u{1F4DA}", links: [
+                { name: "Coursera", url: "https://www.coursera.org", desc: "Online courses" },
+                { name: "Udemy", url: "https://www.udemy.com", desc: "Affordable courses" },
+                { name: "freeCodeCamp", url: "https://www.freecodecamp.org", desc: "Free coding curriculum" },
+                { name: "Khan Academy", url: "https://www.khanacademy.org", desc: "Free education" },
+                { name: "LeetCode", url: "https://leetcode.com", desc: "Coding interview prep" },
+                { name: "HackerRank", url: "https://www.hackerrank.com", desc: "Coding challenges" },
+                { name: "Pluralsight", url: "https://www.pluralsight.com", desc: "Tech skills platform" },
+            ]},
+            { title: "News & Blogs", icon: "\u{1F4F0}", links: [
+                { name: "Hacker News", url: "https://news.ycombinator.com", desc: "Tech news & discussion" },
+                { name: "TechCrunch", url: "https://techcrunch.com", desc: "Startup & tech news" },
+                { name: "The Verge", url: "https://www.theverge.com", desc: "Technology & culture" },
+                { name: "Dev.to", url: "https://dev.to", desc: "Developer community blog" },
+                { name: "Hashnode", url: "https://hashnode.com", desc: "Developer blogging" },
+                { name: "Medium", url: "https://medium.com", desc: "Articles & stories" },
+                { name: "Reddit", url: "https://www.reddit.com", desc: "Community discussions" },
+            ]},
+            { title: "Media & Entertainment", icon: "\u{1F3AC}", links: [
+                { name: "YouTube", url: "https://www.youtube.com", desc: "Video streaming" },
+                { name: "Spotify", url: "https://www.spotify.com", desc: "Music streaming" },
+                { name: "Netflix", url: "https://www.netflix.com", desc: "Movies & TV shows" },
+                { name: "Twitch", url: "https://www.twitch.tv", desc: "Live streaming" },
+                { name: "Pocket", url: "https://getpocket.com", desc: "Save articles for later" },
+            ]},
+            { title: "Social", icon: "\u{1F4AC}", links: [
+                { name: "Twitter / X", url: "https://twitter.com", desc: "Microblogging" },
+                { name: "LinkedIn", url: "https://www.linkedin.com", desc: "Professional network" },
+                { name: "Instagram", url: "https://www.instagram.com", desc: "Photo sharing" },
+                { name: "Discord", url: "https://discord.com", desc: "Community chat" },
+                { name: "Mastodon", url: "https://mastodon.social", desc: "Decentralized social" },
+            ]},
+            { title: "Finance & Business", icon: "\u{1F4B0}", links: [
+                { name: "Yahoo Finance", url: "https://finance.yahoo.com", desc: "Stock market & news" },
+                { name: "Bloomberg", url: "https://www.bloomberg.com", desc: "Financial news" },
+                { name: "Stripe", url: "https://stripe.com", desc: "Payment processing" },
+                { name: "Wise", url: "https://wise.com", desc: "International transfers" },
+                { name: "Mint", url: "https://mint.intuit.com", desc: "Personal finance tracker" },
+            ]},
+            { title: "AI & Machine Learning", icon: "\u{1F916}", links: [
+                { name: "ChatGPT", url: "https://chat.openai.com", desc: "AI assistant" },
+                { name: "Claude", url: "https://claude.ai", desc: "AI assistant by Anthropic" },
+                { name: "Hugging Face", url: "https://huggingface.co", desc: "ML models & datasets" },
+                { name: "Kaggle", url: "https://www.kaggle.com", desc: "Data science competitions" },
+                { name: "Papers with Code", url: "https://paperswithcode.com", desc: "ML research + code" },
+                { name: "Replicate", url: "https://replicate.com", desc: "Run ML models via API" },
+            ]}
+        ];
+        function favicon(url) {
+            try { return `https://www.google.com/s2/favicons?domain=${new URL(url).hostname}&sz=32`; }
+            catch { return ''; }
+        }
+        function render(filter = '') {
+            const container = document.getElementById('bookmarks');
+            container.innerHTML = '';
+            const q = filter.toLowerCase();
+            DATA.forEach(cat => {
+                const filtered = cat.links.filter(l =>
+                    l.name.toLowerCase().includes(q) || l.desc.toLowerCase().includes(q) || cat.title.toLowerCase().includes(q)
+                );
+                if (!filtered.length) return;
+                const section = document.createElement('div');
+                section.className = 'category';
+                section.innerHTML = `<h2>${cat.icon} ${cat.title}</h2>`;
+                const grid = document.createElement('div');
+                grid.className = 'grid';
+                filtered.forEach(link => {
+                    const a = document.createElement('a');
+                    a.className = 'bookmark';
+                    a.href = link.url;
+                    a.target = '_blank';
+                    a.rel = 'noopener';
+                    a.innerHTML = `<img src="${favicon(link.url)}" alt="" loading="lazy" /><div class="info"><div class="name">${link.name}</div><div class="desc">${link.desc}</div></div>`;
+                    grid.appendChild(a);
+                });
+                section.appendChild(grid);
+                container.appendChild(section);
+            });
+        }
+        document.getElementById('search').addEventListener('input', e => render(e.target.value));
+        render();
+    </script>
+</body>
+</html>
