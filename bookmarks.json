@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-04-09T07:20:55Z",
+  "updated_at": "2026-04-09T07:21:15Z",
   "bookmarks": [
     {
       "id": "a1b2c3d4",
@@ -124,6 +124,21 @@
         "internal"
       ],
       "added_at": "2026-04-09T07:20:55Z"
+    },
+    {
+      "id": "9d7d5acc",
+      "url": "https://postmanlabs.atlassian.net/wiki/spaces/IAMP/pages/7567081473/OAuth+on+JIRO+Dashboard",
+      "title": "OAuth on JIRO Dashboard",
+      "description": "Confluence page documenting OAuth integration on the JIRO Dashboard for the IAMP team.",
+      "category": "Design Docs",
+      "tags": [
+        "oauth",
+        "jiro",
+        "dashboard",
+        "confluence",
+        "iamp"
+      ],
+      "added_at": "2026-04-09T07:21:15Z"
     }
   ]
 }
