@@ -1,172 +1,67 @@
-# 🔖 My Bookmarks
+# 🔖 My Daily Bookmarks
 
-> A beautifully curated collection of my favorite links, tools, and resources — all in one place.
+> Quick-access links for everything I need, every day — beautifully organized and served via GitHub Pages.
 
----
-
-## 📑 Table of Contents
-
-- [Daily Essentials](#-daily-essentials)
-- [Development & Code](#-development--code)
-- [Design & Inspiration](#-design--inspiration)
-- [Productivity & Tools](#-productivity--tools)
-- [Learning & Courses](#-learning--courses)
-- [News & Blogs](#-news--blogs)
-- [Media & Entertainment](#-media--entertainment)
-- [Social](#-social)
-- [Finance & Business](#-finance--business)
-- [AI & Machine Learning](#-ai--machine-learning)
+🌐 **Live Site:** [rajeshkumar-pm.github.io/my-bookmarks](https://rajeshkumar-pm.github.io/my-bookmarks/)
 
 ---
 
-## 🌅 Daily Essentials
+## 📊 Overview
 
-| Bookmark | Description |
-|----------|-------------|
-| [Google](https://www.google.com) | Search engine |
-| [Gmail](https://mail.google.com) | Email |
-| [Google Calendar](https://calendar.google.com) | Calendar & scheduling |
-| [Google Drive](https://drive.google.com) | Cloud storage & docs |
-| [Notion](https://www.notion.so) | Notes & workspace |
-
----
-
-## 💻 Development & Code
-
-| Bookmark | Description |
-|----------|-------------|
-| [GitHub](https://github.com) | Code hosting & collaboration |
-| [Stack Overflow](https://stackoverflow.com) | Developer Q&A |
-| [MDN Web Docs](https://developer.mozilla.org) | Web development reference |
-| [DevDocs](https://devdocs.io) | API documentation browser |
-| [CodePen](https://codepen.io) | Frontend playground |
-| [Replit](https://replit.com) | Online IDE |
-| [Regex101](https://regex101.com) | Regular expression tester |
-| [Can I Use](https://caniuse.com) | Browser compatibility tables |
-| [JSON Formatter](https://jsonformatter.org) | JSON tools |
-| [Postman](https://www.postman.com) | API testing platform |
+| Category | Tool | Count |
+|----------|------|:-----:|
+| 🚀 API Testing & Development | Postman | 1 |
+| 📝 Documentation & Knowledge Base | Google Docs | 1 |
+| 💬 Communication & Collaboration | Slack | 1 |
+| 📈 Monitoring & Observability | New Relic | 1 |
 
 ---
 
-## 🎨 Design & Inspiration
+## 🚀 API Testing & Development
 
-| Bookmark | Description |
-|----------|-------------|
-| [Dribbble](https://dribbble.com) | Design inspiration |
-| [Behance](https://www.behance.net) | Creative portfolios |
-| [Figma](https://www.figma.com) | Collaborative design tool |
-| [Coolors](https://coolors.co) | Color palette generator |
-| [Google Fonts](https://fonts.google.com) | Free web fonts |
-| [Unsplash](https://unsplash.com) | Free high-quality photos |
-| [Icons8](https://icons8.com) | Icons, illustrations & photos |
-| [Heroicons](https://heroicons.com) | Beautiful hand-crafted SVG icons |
+| Bookmark | Description | Platform |
+|----------|-------------|----------|
+| [IAM Catalogue APIs](https://postman.postman.co/workspace/IAM-Catalogue-APIs~4935b346-812a-494a-801c-671dc6e-environment=23034412-bfe16dff-2c75-4534-bcea-10adc3d5a677) | Postman workspace for IAM Catalogue API collections & environments | Postman |
 
----
+## 📝 Documentation & Knowledge Base
 
-## ⚡ Productivity & Tools
+| Bookmark | Description | Platform |
+|----------|-------------|----------|
+| [Project Reference Document](https://docs.google.com/document/d/1rAydkiO18T0zPz6QWUg6w4jrPVH1u97aUHgWfw4Qo1Y/edit?tab=t.0#heading=h.14ih80wij0sb) | Key project documentation and reference material | Google Docs |
 
-| Bookmark | Description |
-|----------|-------------|
-| [Trello](https://trello.com) | Kanban boards |
-| [Slack](https://slack.com) | Team communication |
-| [Todoist](https://todoist.com) | Task management |
-| [Excalidraw](https://excalidraw.com) | Virtual whiteboard |
-| [Grammarly](https://www.grammarly.com) | Writing assistant |
-| [Calendly](https://calendly.com) | Scheduling tool |
-| [1Password](https://1password.com) | Password manager |
-| [Loom](https://www.loom.com) | Screen recording |
+## 💬 Communication & Collaboration
+
+| Bookmark | Description | Platform |
+|----------|-------------|----------|
+| [Slack DM Thread](https://postman.slack.com/archives/D0A7Q8YQBN3/p1775123992111719) | Important Slack DM thread — pinned for quick reference | Slack |
+
+## 📈 Monitoring & Observability
+
+| Bookmark | Description | Platform |
+|----------|-------------|----------|
+| [New Relic Dashboard](https://one.newrelic.com/dashboards/detail/MjY2NTkxOHxWSVp8REFTSEJPQVJEfGRhOjEyMzA2NDgz?account=2665918&begin=1774843617905&end=1774847217905&state=be8100c6-46e4-18dd-4e42-5477a9d355d5) | Production monitoring — performance, errors & infrastructure health | New Relic |
 
 ---
 
-## 📚 Learning & Courses
+## 🛠 How to Add More Bookmarks
 
-| Bookmark | Description |
-|----------|-------------|
-| [Coursera](https://www.coursera.org) | Online courses |
-| [Udemy](https://www.udemy.com) | Affordable courses |
-| [freeCodeCamp](https://www.freecodecamp.org) | Free coding curriculum |
-| [Khan Academy](https://www.khanacademy.org) | Free education |
-| [LeetCode](https://leetcode.com) | Coding interview prep |
-| [HackerRank](https://www.hackerrank.com) | Coding challenges |
-| [Pluralsight](https://www.pluralsight.com) | Tech skills platform |
+1. Edit `index.html` — add a new `<a class="bookmark ...">` block inside the right category
+2. Edit this `README.md` — add a new row to the matching table
+3. Commit & push — the site updates automatically!
 
 ---
 
-## 📰 News & Blogs
+## 🎨 Features
 
-| Bookmark | Description |
-|----------|-------------|
-| [Hacker News](https://news.ycombinator.com) | Tech news & discussion |
-| [TechCrunch](https://techcrunch.com) | Startup & tech news |
-| [The Verge](https://www.theverge.com) | Technology & culture |
-| [Dev.to](https://dev.to) | Developer community blog |
-| [Hashnode](https://hashnode.com) | Developer blogging |
-| [Medium](https://medium.com) | Articles & stories |
-| [Reddit](https://www.reddit.com) | Community discussions |
-
----
-
-## 🎬 Media & Entertainment
-
-| Bookmark | Description |
-|----------|-------------|
-| [YouTube](https://www.youtube.com) | Video streaming |
-| [Spotify](https://www.spotify.com) | Music streaming |
-| [Netflix](https://www.netflix.com) | Movies & TV shows |
-| [Twitch](https://www.twitch.tv) | Live streaming |
-| [Pocket](https://getpocket.com) | Save articles for later |
-
----
-
-## 💬 Social
-
-| Bookmark | Description |
-|----------|-------------|
-| [Twitter / X](https://twitter.com) | Microblogging |
-| [LinkedIn](https://www.linkedin.com) | Professional network |
-| [Instagram](https://www.instagram.com) | Photo sharing |
-| [Discord](https://discord.com) | Community chat |
-| [Mastodon](https://mastodon.social) | Decentralized social |
-
----
-
-## 💰 Finance & Business
-
-| Bookmark | Description |
-|----------|-------------|
-| [Yahoo Finance](https://finance.yahoo.com) | Stock market & news |
-| [Bloomberg](https://www.bloomberg.com) | Financial news |
-| [Stripe](https://stripe.com) | Payment processing |
-| [Wise](https://wise.com) | International transfers |
-| [Mint](https://mint.intuit.com) | Personal finance tracker |
-
----
-
-## 🤖 AI & Machine Learning
-
-| Bookmark | Description |
-|----------|-------------|
-| [ChatGPT](https://chat.openai.com) | AI assistant |
-| [Claude](https://claude.ai) | AI assistant by Anthropic |
-| [Hugging Face](https://huggingface.co) | ML models & datasets |
-| [Kaggle](https://www.kaggle.com) | Data science competitions |
-| [Papers with Code](https://paperswithcode.com) | ML research + code |
-| [Replicate](https://replicate.com) | Run ML models via API |
-
----
-
-## ➕ How to Add Bookmarks
-
-1. **Fork** this repo or edit directly
-2. Add your link under the right category using this format:
-   ```
-   | [Site Name](https://url.com) | Short description |
-   ```
-3. Commit and push — your bookmarks page updates instantly!
+- ✅ Dark theme with gradient accents
+- ✅ Color-coded categories (amber, blue, purple, green)
+- ✅ Hover animations with glow effects
+- ✅ Fully responsive (mobile-friendly)
+- ✅ Auto-displays today's date
+- ✅ GitHub Pages hosted
 
 ---
 
 <p align="center">
-  <i>Last updated: June 2025</i><br>
-  <b>⭐ Star this repo to keep your bookmarks handy!</b>
+  <i>Curated with ❤️ — edit anytime to keep your workflow sharp.</i>
 </p>
