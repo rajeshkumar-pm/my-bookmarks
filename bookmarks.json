@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-04-09T07:55:41Z",
+  "updated_at": "2026-04-09T07:56:35Z",
   "bookmarks": [
     {
       "id": "a1b2c3d4",
@@ -195,6 +195,20 @@
         "private"
       ],
       "added_at": "2026-04-09T07:55:41Z"
+    },
+    {
+      "id": "a9147d19",
+      "url": "https://postmanlabs.atlassian.net/browse/IAMN-349",
+      "title": "IAMN-349 — Jira Issue",
+      "description": "Jira issue IAMN-349 in the Postman Labs Atlassian project.",
+      "category": "Important",
+      "tags": [
+        "jira",
+        "iamn",
+        "postman",
+        "issue-tracking"
+      ],
+      "added_at": "2026-04-09T07:56:35Z"
     }
   ]
 }
