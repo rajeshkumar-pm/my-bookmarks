@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-04-09T07:19:25Z",
+  "updated_at": "2026-04-09T07:20:02Z",
   "bookmarks": [
     {
       "id": "a1b2c3d4",
@@ -82,6 +82,20 @@
         "accounts"
       ],
       "added_at": "2026-04-09T07:19:25Z"
+    },
+    {
+      "id": "e47045d1",
+      "url": "https://postmanlabs.atlassian.net/jira/dashboards/15281",
+      "title": "Postman Jira Dashboard",
+      "description": "Jira dashboard for the Postman Labs team on Atlassian.",
+      "category": "Important",
+      "tags": [
+        "jira",
+        "dashboard",
+        "postman",
+        "project-management"
+      ],
+      "added_at": "2026-04-09T07:20:02Z"
     }
   ]
 }
