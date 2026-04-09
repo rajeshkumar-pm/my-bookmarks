@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-04-09T07:46:06Z",
+  "updated_at": "2026-04-09T07:46:27Z",
   "bookmarks": [
     {
       "id": "a1b2c3d4",
@@ -168,6 +168,20 @@
         "ai"
       ],
       "added_at": "2026-04-09T07:46:06Z"
+    },
+    {
+      "id": "bacc4d5e",
+      "url": "https://docs.python.org/3/",
+      "title": "Python 3.14 Documentation",
+      "description": "The official Python documentation covering the standard library, language reference, tutorials, and more.",
+      "category": "Learning",
+      "tags": [
+        "python",
+        "documentation",
+        "programming",
+        "reference"
+      ],
+      "added_at": "2026-04-09T07:46:27Z"
     }
   ]
 }
