@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-04-09T06:00:00Z",
+  "updated_at": "2026-04-09T07:18:14Z",
   "bookmarks": [
     {
       "id": "a1b2c3d4",
@@ -52,6 +52,21 @@
         "dashboard"
       ],
       "added_at": "2026-04-09T05:00:00Z"
+    },
+    {
+      "id": "c2f12441",
+      "url": "https://support.postmanlabs-beta.com/",
+      "title": "Support Dashboard — Postman Labs Beta",
+      "description": "Support dashboard for Postman Labs beta, providing help and support resources for the Postman API platform.",
+      "category": "APIs & Integrations",
+      "tags": [
+        "postman",
+        "api",
+        "support",
+        "beta",
+        "developer-tools"
+      ],
+      "added_at": "2026-04-09T07:18:14Z"
     }
   ]
 }
