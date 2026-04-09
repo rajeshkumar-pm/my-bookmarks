@@ -1,443 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🔖 Rajesh's Daily Bookmarks</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --bg: #0f172a;
-      --surface: #1e293b;
-      --surface-hover: #334155;
-      --border: #334155;
-      --text: #f1f5f9;
-      --text-muted: #94a3b8;
-      --accent-api: #f59e0b;
-      --accent-docs: #3b82f6;
-      --accent-chat: #a855f7;
-      --accent-monitor: #10b981;
-      --gradient-start: #6366f1;
-      --gradient-end: #ec4899;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bookmarks (0)</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:11px;background:#0d1117;color:#c9d1d9}
+a{text-decoration:none;color:inherit}
+button{background:none;border:none;cursor:pointer;font:inherit;color:inherit;text-align:left;width:100%}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:#30363d;border-radius:2px}
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+/* ── shell ── */
+.sh{display:flex;flex-direction:column;height:100vh}
 
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
+/* ── topbar 36px ── */
+.tb{height:36px;background:#161b22;border-bottom:1px solid #21262d;display:flex;align-items:center;gap:8px;padding:0 12px;flex-shrink:0}
+.br{font-weight:700;font-size:12px;color:#388bfd;white-space:nowrap}
+.sw{position:relative;flex:1;max-width:280px}
+.sw input{width:100%;background:#0d1117;border:1px solid #21262d;border-radius:4px;padding:3px 8px 3px 22px;font-size:10.5px;color:#c9d1d9;outline:none}
+.sw input:focus{border-color:#388bfd}
+.sw svg{position:absolute;left:7px;top:50%;transform:translateY(-50%);color:#484f58;pointer-events:none}
+.ts{margin-left:auto;font-size:10px;color:#484f58;white-space:nowrap;display:flex;gap:8px}
+.ts b{color:#8b949e}
+.el{font-size:10px;color:#388bfd;padding:2px 6px;border:1px solid #21262d;border-radius:4px;white-space:nowrap}
+.el:hover{border-color:#388bfd}
 
-    /* Animated background grid */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image:
-        radial-gradient(circle at 20% 50%, rgba(99,102,241,0.08) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(236,72,153,0.06) 0%, transparent 50%),
-        radial-gradient(circle at 50% 80%, rgba(16,185,129,0.05) 0%, transparent 50%);
-      z-index: 0;
-    }
+/* ── body ── */
+.bd{display:flex;flex:1;overflow:hidden}
 
-    .container {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 3rem 1.5rem;
-      position: relative;
-      z-index: 1;
-    }
+/* ── sidebar 130px ── */
+.sb{width:130px;flex-shrink:0;background:#161b22;border-right:1px solid #21262d;overflow-y:auto;padding:4px;display:flex;flex-direction:column;gap:1px}
+.nav{display:flex;align-items:center;gap:4px;padding:3px 5px;border-radius:3px;font-size:10.5px;color:#8b949e;transition:background .1s,color .1s}
+.nav:hover,.nav.active{background:#21262d;color:#c9d1d9}
+.d{width:4px;height:4px;border-radius:50%;flex-shrink:0}
+.lb{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:10.5px}
+.n{font-size:9.5px;font-weight:700;flex-shrink:0}
 
-    /* Header */
-    .header {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
+/* ── content ── */
+.ct{flex:1;overflow:hidden;display:flex;flex-direction:column}
 
-    .header h1 {
-      font-size: 2.8rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 0.5rem;
-    }
+/* ── panel ── */
+.panel{display:none;flex-direction:column;height:100%;overflow:hidden}
 
-    .header p {
-      color: var(--text-muted);
-      font-size: 1.1rem;
-      font-weight: 400;
-    }
+/* ── panel header 26px ── */
+.ph{display:flex;align-items:center;gap:6px;padding:0 10px;height:26px;background:#161b22;border-bottom:1px solid #21262d;flex-shrink:0;font-size:10.5px;color:#8b949e}
+.pc{font-size:9.5px;font-weight:700;margin-left:4px}
+.pu{margin-left:auto;font-size:9.5px;color:#30363d}
 
-    .header .date-badge {
-      display: inline-block;
-      margin-top: 1rem;
-      padding: 0.4rem 1rem;
-      background: rgba(99,102,241,0.15);
-      border: 1px solid rgba(99,102,241,0.3);
-      border-radius: 999px;
-      font-size: 0.85rem;
-      color: #a5b4fc;
-    }
+/* ── grid: 3 columns ── */
+.gr{flex:1;overflow-y:auto;display:grid;grid-template-columns:repeat(3,1fr);align-content:start}
+@media(max-width:1100px){.gr{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){.gr{grid-template-columns:1fr}}
 
-    /* Category Section */
-    .category {
-      margin-bottom: 2.5rem;
-    }
+/* ── row 22px ── */
+.r{display:flex;align-items:center;gap:5px;padding:0 8px;height:22px;border-bottom:1px solid #161b22;border-right:1px solid #161b22;overflow:hidden;position:relative;transition:background .08s}
+.r::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--c,#388bfd);opacity:0;transition:opacity .08s}
+.r:hover{background:#1c2128}
+.r:hover::before{opacity:1}
+.fi{width:12px;height:12px;flex-shrink:0;border-radius:2px;object-fit:contain}
+.tt{flex:1;font-size:11px;font-weight:500;color:#c9d1d9;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.dm{font-size:9.5px;color:#484f58;white-space:nowrap;flex-shrink:0;margin-left:3px;max-width:90px;overflow:hidden;text-overflow:ellipsis}
 
-    .category-header {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      margin-bottom: 1rem;
-      padding-bottom: 0.75rem;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .category-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.3rem;
-      flex-shrink: 0;
-    }
-
-    .category-icon.api     { background: rgba(245,158,11,0.15); }
-    .category-icon.docs    { background: rgba(59,130,246,0.15); }
-    .category-icon.chat    { background: rgba(168,85,247,0.15); }
-    .category-icon.monitor { background: rgba(16,185,129,0.15); }
-
-    .category-title {
-      font-size: 1.25rem;
-      font-weight: 700;
-    }
-
-    .category-subtitle {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      font-weight: 400;
-    }
-
-    /* Bookmark Card */
-    .bookmark {
-      display: flex;
-      align-items: flex-start;
-      gap: 1rem;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 1.25rem 1.5rem;
-      margin-bottom: 0.75rem;
-      text-decoration: none;
-      color: var(--text);
-      transition: all 0.25s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .bookmark::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 4px;
-      border-radius: 4px 0 0 4px;
-      transition: background 0.25s;
-    }
-
-    .bookmark.api::before    { background: var(--accent-api); }
-    .bookmark.docs::before   { background: var(--accent-docs); }
-    .bookmark.chat::before   { background: var(--accent-chat); }
-    .bookmark.monitor::before { background: var(--accent-monitor); }
-
-    .bookmark:hover {
-      background: var(--surface-hover);
-      border-color: #475569;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
-    }
-
-    .bm-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      flex-shrink: 0;
-    }
-
-    .bm-icon.api     { background: rgba(245,158,11,0.12); color: var(--accent-api); }
-    .bm-icon.docs    { background: rgba(59,130,246,0.12); color: var(--accent-docs); }
-    .bm-icon.chat    { background: rgba(168,85,247,0.12); color: var(--accent-chat); }
-    .bm-icon.monitor { background: rgba(16,185,129,0.12); color: var(--accent-monitor); }
-
-    .bm-content { flex: 1; min-width: 0; }
-
-    .bm-title {
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 0.3rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .bm-desc {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-
-    .bm-tag {
-      display: inline-block;
-      padding: 0.15rem 0.6rem;
-      border-radius: 999px;
-      font-size: 0.7rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .bm-tag.api     { background: rgba(245,158,11,0.15); color: #fbbf24; }
-    .bm-tag.docs    { background: rgba(59,130,246,0.15); color: #60a5fa; }
-    .bm-tag.chat    { background: rgba(168,85,247,0.15); color: #c084fc; }
-    .bm-tag.monitor { background: rgba(16,185,129,0.15); color: #34d399; }
-
-    .bm-arrow {
-      color: var(--text-muted);
-      font-size: 1.2rem;
-      transition: transform 0.25s;
-      align-self: center;
-    }
-
-    .bookmark:hover .bm-arrow {
-      transform: translateX(4px);
-      color: var(--text);
-    }
-
-    /* URL display */
-    .bm-url {
-      font-size: 0.75rem;
-      color: #64748b;
-      margin-top: 0.35rem;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      font-family: 'SF Mono', 'Fira Code', monospace;
-    }
-
-    /* Footer */
-    .footer {
-      text-align: center;
-      margin-top: 3rem;
-      padding-top: 2rem;
-      border-top: 1px solid var(--border);
-      color: var(--text-muted);
-      font-size: 0.85rem;
-    }
-
-    .footer a {
-      color: #818cf8;
-      text-decoration: none;
-    }
-
-    /* Quick Stats */
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
-      margin-bottom: 3rem;
-    }
-
-    .stat-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 1.25rem;
-      text-align: center;
-    }
-
-    .stat-number {
-      font-size: 1.8rem;
-      font-weight: 800;
-    }
-
-    .stat-number.api     { color: var(--accent-api); }
-    .stat-number.docs    { color: var(--accent-docs); }
-    .stat-number.chat    { color: var(--accent-chat); }
-    .stat-number.monitor { color: var(--accent-monitor); }
-
-    .stat-label {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      margin-top: 0.25rem;
-    }
-
-    @media (max-width: 640px) {
-      .header h1 { font-size: 2rem; }
-      .stats { grid-template-columns: repeat(2, 1fr); }
-      .bookmark { flex-direction: column; gap: 0.75rem; }
-    }
-  </style>
+.hidden{display:none!important}
+.empty{padding:40px;text-align:center;color:#484f58;font-size:12px}
+</style>
 </head>
 <body>
-  <div class="container">
-
-    <!-- Header -->
-    <div class="header">
-      <h1>My Daily Bookmarks</h1>
-      <p>Quick-access links for everything I need, every day.</p>
-      <div class="date-badge" id="dateBadge"></div>
+<div class="sh">
+  <div class="tb">
+    <span class="br">🔖 Bookmarks</span>
+    <div class="sw">
+      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" id="q" placeholder="Search…" autocomplete="off">
     </div>
-
-    <!-- Quick Stats -->
-    <div class="stats">
-      <div class="stat-card">
-        <div class="stat-number api">1</div>
-        <div class="stat-label">API Testing</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number docs">1</div>
-        <div class="stat-label">Documentation</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number chat">1</div>
-        <div class="stat-label">Communication</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number monitor">1</div>
-        <div class="stat-label">Monitoring</div>
-      </div>
-    </div>
-
-    <!-- ============================================ -->
-    <!--  CATEGORY 1: API Testing & Development       -->
-    <!-- ============================================ -->
-    <div class="category">
-      <div class="category-header">
-        <div class="category-icon api">&#128640;</div>
-        <div>
-          <div class="category-title">API Testing &amp; Development</div>
-          <div class="category-subtitle">Postman workspaces, collections, and API tools</div>
-        </div>
-      </div>
-
-      <a class="bookmark api" href="https://postman.postman.co/workspace/IAM-Catalogue-APIs~4935b346-812a-494a-801c-671dc6e-environment=23034412-bfe16dff-2c75-4534-bcea-10adc3d5a677" target="_blank" rel="noopener">
-        <div class="bm-icon api">&#9889;</div>
-        <div class="bm-content">
-          <div class="bm-title">
-            IAM Catalogue APIs
-            <span class="bm-tag api">Postman</span>
-          </div>
-          <div class="bm-desc">Postman workspace for IAM Catalogue API collections and environments. Used for testing identity and access management endpoints.</div>
-          <div class="bm-url">postman.postman.co/workspace/IAM-Catalogue-APIs</div>
-        </div>
-        <div class="bm-arrow">&#8594;</div>
-      </a>
-    </div>
-
-    <!-- ============================================ -->
-    <!--  CATEGORY 2: Documentation & Knowledge Base  -->
-    <!-- ============================================ -->
-    <div class="category">
-      <div class="category-header">
-        <div class="category-icon docs">&#128221;</div>
-        <div>
-          <div class="category-title">Documentation &amp; Knowledge Base</div>
-          <div class="category-subtitle">Google Docs, specs, design docs, and references</div>
-        </div>
-      </div>
-
-      <a class="bookmark docs" href="https://docs.google.com/document/d/1rAydkiO18T0zPz6QWUg6w4jrPVH1u97aUHgWfw4Qo1Y/edit?tab=t.0#heading=h.14ih80wij0sb" target="_blank" rel="noopener">
-        <div class="bm-icon docs">&#128196;</div>
-        <div class="bm-content">
-          <div class="bm-title">
-            Project Reference Document
-            <span class="bm-tag docs">Google Docs</span>
-          </div>
-          <div class="bm-desc">Key project documentation and reference material. Shared Google Doc for team collaboration and knowledge sharing.</div>
-          <div class="bm-url">docs.google.com/document/d/1rAydkiO18T...</div>
-        </div>
-        <div class="bm-arrow">&#8594;</div>
-      </a>
-    </div>
-
-    <!-- ============================================ -->
-    <!--  CATEGORY 3: Communication & Collaboration   -->
-    <!-- ============================================ -->
-    <div class="category">
-      <div class="category-header">
-        <div class="category-icon chat">&#128172;</div>
-        <div>
-          <div class="category-title">Communication &amp; Collaboration</div>
-          <div class="category-subtitle">Slack channels, threads, and team discussions</div>
-        </div>
-      </div>
-
-      <a class="bookmark chat" href="https://postman.slack.com/archives/D0A7Q8YQBN3/p1775123992111719" target="_blank" rel="noopener">
-        <div class="bm-icon chat">&#128488;</div>
-        <div class="bm-content">
-          <div class="bm-title">
-            Slack DM Thread
-            <span class="bm-tag chat">Slack</span>
-          </div>
-          <div class="bm-desc">Important Slack direct message thread in Postman workspace. Pinned conversation for quick reference and follow-ups.</div>
-          <div class="bm-url">postman.slack.com/archives/D0A7Q8YQBN3</div>
-        </div>
-        <div class="bm-arrow">&#8594;</div>
-      </a>
-    </div>
-
-    <!-- ============================================ -->
-    <!--  CATEGORY 4: Monitoring & Observability      -->
-    <!-- ============================================ -->
-    <div class="category">
-      <div class="category-header">
-        <div class="category-icon monitor">&#128200;</div>
-        <div>
-          <div class="category-title">Monitoring &amp; Observability</div>
-          <div class="category-subtitle">Dashboards, alerts, metrics, and system health</div>
-        </div>
-      </div>
-
-      <a class="bookmark monitor" href="https://one.newrelic.com/dashboards/detail/MjY2NTkxOHxWSVp8REFTSEJPQVJEfGRhOjEyMzA2NDgz?account=2665918&begin=1774843617905&end=1774847217905&state=be8100c6-46e4-18dd-4e42-5477a9d355d5" target="_blank" rel="noopener">
-        <div class="bm-icon monitor">&#128202;</div>
-        <div class="bm-content">
-          <div class="bm-title">
-            New Relic Dashboard
-            <span class="bm-tag monitor">New Relic</span>
-          </div>
-          <div class="bm-desc">Production monitoring dashboard on New Relic. Track application performance, errors, throughput, and infrastructure health in real time.</div>
-          <div class="bm-url">one.newrelic.com/dashboards/detail/MjY2NTkx...</div>
-        </div>
-        <div class="bm-arrow">&#8594;</div>
-      </a>
-    </div>
-
-    <!-- Footer -->
-    <div class="footer">
-      <p>Curated with care &mdash; <a href="https://github.com/rajeshkumar-pm/my-bookmarks">View on GitHub</a></p>
-      <p style="margin-top:0.5rem;">Tip: Edit <code>index.html</code> to add more bookmarks!</p>
-    </div>
-
+    <div class="ts"><span><b>0</b> links</span><span><b>0</b> cats</span></div>
+    <a class="el" href="https://rajeshkumar-pm.github.io/my-bookmarks/" target="_blank">↗ Live</a>
   </div>
-
-  <script>
-    // Display today's date
-    const d = new Date();
-    const opts = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    document.getElementById('dateBadge').textContent = d.toLocaleDateString('en-US', opts);
-  </script>
+  <div class="bd">
+    <div class="sb" id="sb"></div>
+    <div class="ct" id="ct">
+      <div class="empty">No bookmarks yet — add your first URL in the chat.</div>
+    </div>
+  </div>
+</div>
+<script>
+var A='';
+function showCat(c,b){
+  A=c;
+  document.querySelectorAll('.panel').forEach(p=>p.style.display='none');
+  document.querySelectorAll('.nav').forEach(n=>n.classList.remove('active'));
+  var p=document.getElementById('p-'+c);if(p)p.style.display='flex';
+  if(b)b.classList.add('active');
+  var q=document.getElementById('q');if(q){q.value='';showAll(c);}
+}
+function showAll(c){
+  var g=document.getElementById('gr-'+c);
+  if(g)g.querySelectorAll('.r').forEach(r=>r.classList.remove('hidden'));
+}
+document.getElementById('q').addEventListener('input',function(){
+  var q=this.value.toLowerCase().trim();
+  if(q.length>1){
+    document.querySelectorAll('.panel').forEach(function(p){
+      var ok=false;
+      p.querySelectorAll('.r').forEach(function(r){var m=r.dataset.s.includes(q);r.classList.toggle('hidden',!m);if(m)ok=true;});
+      p.style.display=ok?'flex':'none';
+    });
+    document.querySelectorAll('.nav').forEach(n=>n.classList.remove('active'));
+  }else{
+    document.querySelectorAll('.panel').forEach(function(p){p.style.display='none';p.querySelectorAll('.r').forEach(r=>r.classList.remove('hidden'));});
+    var ap=document.getElementById('p-'+A);if(ap)ap.style.display='flex';
+    document.querySelectorAll('.nav').forEach(function(n){if(n.dataset.cat===A)n.classList.add('active');});
+  }
+});
+</script>
 </body>
 </html>
