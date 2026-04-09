@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-04-09T07:20:37Z",
+  "updated_at": "2026-04-09T07:20:55Z",
   "bookmarks": [
     {
       "id": "a1b2c3d4",
@@ -111,6 +111,19 @@
         "guidelines"
       ],
       "added_at": "2026-04-09T07:20:37Z"
+    },
+    {
+      "id": "364313b4",
+      "url": "https://docs.google.com/spreadsheets/d/15-rHSIGXgI_7wN_Jmh8x2KGNkB0iFbVAQvrf8UCFHeo/edit?gid=719332229#gid=719332229",
+      "title": "Google Sheets – Internal Spreadsheet",
+      "description": "A Google Sheets document (login required to view contents).",
+      "category": "Important",
+      "tags": [
+        "google-sheets",
+        "spreadsheet",
+        "internal"
+      ],
+      "added_at": "2026-04-09T07:20:55Z"
     }
   ]
 }
