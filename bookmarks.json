@@ -1,1 +1,57 @@
-{"version":1,"updated_at":"2026-04-09T00:00:00Z","bookmarks":[]}
+{
+  "version": 1,
+  "updated_at": "2026-04-09T06:00:00Z",
+  "bookmarks": [
+    {
+      "id": "a1b2c3d4",
+      "url": "https://postman.postman.co/workspace/IAM-Catalogue-APIs~4935b346-812a-494a-801c-671dc6e5ecb1/overview",
+      "title": "IAM Catalogue APIs",
+      "description": "Postman workspace for IAM Catalogue API collections and environments.",
+      "category": "APIs & Integrations",
+      "tags": [
+        "postman",
+        "iam",
+        "api"
+      ],
+      "added_at": "2026-04-09T05:00:00Z"
+    },
+    {
+      "id": "e5f6g7h8",
+      "url": "https://docs.google.com/document/d/1rAydkiO18T0zPz6QWUg6w4jrPVH1u97aUHgWfw4Qo1Y/edit",
+      "title": "Project Reference Document",
+      "description": "Key project documentation and reference material.",
+      "category": "Design Docs",
+      "tags": [
+        "docs",
+        "reference",
+        "google-docs"
+      ],
+      "added_at": "2026-04-09T05:00:00Z"
+    },
+    {
+      "id": "i9j0k1l2",
+      "url": "https://postman.slack.com/archives/D0A7Q8YQBN3/p1775123992111719",
+      "title": "Slack DM Thread",
+      "description": "Direct message thread in Postman Slack workspace.",
+      "category": "Communication",
+      "tags": [
+        "slack",
+        "dm"
+      ],
+      "added_at": "2026-04-09T05:00:00Z"
+    },
+    {
+      "id": "m3n4o5p6",
+      "url": "https://one.newrelic.com/dashboards/detail/MjY2NTkxOHxWSVp8REFTSEJPQVJEfGRhOjEyMzA2NDgz?account=2665918",
+      "title": "New Relic Dashboard",
+      "description": "Production monitoring dashboard in New Relic.",
+      "category": "Observability",
+      "tags": [
+        "newrelic",
+        "monitoring",
+        "dashboard"
+      ],
+      "added_at": "2026-04-09T05:00:00Z"
+    }
+  ]
+}
