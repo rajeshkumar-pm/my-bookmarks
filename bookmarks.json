@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-04-09T07:34:48Z",
+  "updated_at": "2026-04-09T07:34:55Z",
   "bookmarks": [
     {
       "id": "a1b2c3d4",
@@ -138,6 +138,21 @@
         "troubleshooting"
       ],
       "added_at": "2026-04-09T07:21:30Z"
+    },
+    {
+      "id": "e515ef92",
+      "url": "https://postmanlabs.atlassian.net/wiki/spaces/IAMP/pages/6252233009/Self-Serve+Role+and+Permission+Creation+Guidelines",
+      "title": "Self-Serve Role and Permission Creation Guidelines",
+      "description": "Confluence page outlining guidelines for self-serve role and permission creation in the IAMP space.",
+      "category": "Design Docs",
+      "tags": [
+        "iam",
+        "permissions",
+        "roles",
+        "self-serve",
+        "confluence"
+      ],
+      "added_at": "2026-04-09T07:34:55Z"
     }
   ]
 }
