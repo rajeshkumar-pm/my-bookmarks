@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-04-09T07:46:27Z",
+  "updated_at": "2026-04-09T07:55:41Z",
   "bookmarks": [
     {
       "id": "a1b2c3d4",
@@ -182,6 +182,19 @@
         "reference"
       ],
       "added_at": "2026-04-09T07:46:27Z"
+    },
+    {
+      "id": "ac081fec",
+      "url": "https://docs.google.com/document/d/1QDF-znNs7KoTOYfpFEXsdiNgg9aukx8AYK80SBqPYgM/edit?tab=t.0#heading=h.p5x2pep5vdxs",
+      "title": "Google Doc (untitled — private document)",
+      "description": "Private Google Doc. Title could not be fetched automatically — update when available.",
+      "category": "Design Docs",
+      "tags": [
+        "google-docs",
+        "document",
+        "private"
+      ],
+      "added_at": "2026-04-09T07:55:41Z"
     }
   ]
 }
