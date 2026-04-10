@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-04-09T11:59:47Z",
+  "updated_at": "2026-04-10T06:45:36Z",
   "bookmarks": [
     {
       "id": "a1b2c3d4",
@@ -224,6 +224,21 @@
         "workflows"
       ],
       "added_at": "2026-04-09T11:59:47Z"
+    },
+    {
+      "id": "b8dd09a5",
+      "url": "https://postmanlabs.atlassian.net/wiki/spaces/IAMP/pages/7912128518/IAMZ-1448+IRR+Debug+Permission+Check+API+read-only+trace+endpoint+for+RBAC+debugging",
+      "title": "IRR Review",
+      "description": "IAMZ-1448: IRR Debug Permission Check API — read-only trace endpoint for RBAC debugging.",
+      "category": "Important",
+      "tags": [
+        "irr",
+        "rbac",
+        "debugging",
+        "permissions",
+        "iamz"
+      ],
+      "added_at": "2026-04-10T06:45:36Z"
     }
   ]
 }
