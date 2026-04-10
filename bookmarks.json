@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-04-10T07:34:54Z",
+  "updated_at": "2026-04-10T07:44:03Z",
   "bookmarks": [
     {
       "id": "a1b2c3d4",
@@ -254,6 +254,20 @@
         "runbook"
       ],
       "added_at": "2026-04-10T07:32:59Z"
+    },
+    {
+      "id": "90c4dfad",
+      "url": "https://postmanlabs.atlassian.net/jira/ops/teams/og-9e5f21aa-08c4-4859-b2b4-3cbcaf910d5c/on-call#ad8d0ad5-b701-4bd0-b480-356aec597a02",
+      "title": "Jira Ops - On-Call Schedule",
+      "description": "On-call schedule and team rotation page in Jira Ops for incident management.",
+      "category": "On Call",
+      "tags": [
+        "on-call",
+        "jira-ops",
+        "incident-management",
+        "schedule"
+      ],
+      "added_at": "2026-04-10T07:44:03Z"
     }
   ]
 }
